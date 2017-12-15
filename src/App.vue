@@ -44,7 +44,6 @@
       <!--Dit dient om de routes te bepalen -->
       <router-view></router-view>
     </main>  
-
   </v-app>
 </template>
 

@@ -2,7 +2,7 @@
     <v-container>
         <v-layout row wrap class="mb-2">
             <v-flex xs12 sm6 class="text-xs-center text-sm-right">
-                <v-btn large router to="/meetups" class="info">Exploere Meetups</v-btn>
+                <v-btn large router to="/meetups" class="info">Explore Meetups</v-btn>
             </v-flex>
             <v-flex xs12 sm6 class="text-xs-center text-sm-left">
                 <v-btn large router to="/meetup/new" class="info">Organize Meetup</v-btn>
@@ -14,7 +14,8 @@
                     <v-carousel-item 
                     v-for="meetup in meetups" 
                     v-bind:src="meetup.imageUrl" 
-                    :key="meetup.id">
+                    :key="meetup.id"
+                    @click="onLoadMeetup(meetup.id)">
                     <div class="title">{{meetup.title}}</div>
                     </v-carousel-item>
                 </v-carousel>
@@ -45,8 +46,13 @@
         return {
           meetups: [
               {imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg', id: 'blabla1', title: 'Meetup in New York'},
-              {imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Paris_-_Blick_vom_gro%C3%9Fen_Triumphbogen.jpg', id: 'blabla2', title: 'Meetup in Paris'}
+              {imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Paris_-_Blick_vom_gro%C3%9Fen_Triumphbogen.jpg', id: '1', title: 'Meetup in Paris'}
           ]
+        }
+      },
+      methods: {
+        onLoadMeetup (id) {
+          this.$router.push('/meetups/' + id)
         }
       }
     }
